@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head th:replace="~{base :: head}"></head>
+    <body>
+        <div class="container">
+            <nav th:replace="~{base :: menu(${pagina})}"></nav>
+            <div class="row">
+                <table class="table table-striped table-hover text-center align-middle table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="col-8">Nome</th>
+                            <th class="col-2">Fone</th>
+                            <th class="col-2">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="contato : ${contatos}">
+                            <td class="text-start" th:text="${contato.nome}">nome</td>
+                            <td th:text="${contato.fone}">fone</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" title="Editar" th:href="@{/contatos/editar/{id}(id=${contato.id})}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" title="Remover" th:href="@{/contatos/remover/{id}(id=${contato.id})}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
